@@ -6,7 +6,7 @@ import java.util.Collections;
 
 import static java.lang.Integer.parseInt;
 
-public class AOC {
+public class Day1 {
     private static ArrayList<Integer> left = new ArrayList<>();
     private static ArrayList<Integer> right = new ArrayList<>();
     private static ArrayList<String[]> pairs = new ArrayList<>();
@@ -20,7 +20,7 @@ public class AOC {
         countOcurances();
     }
 
-    private static void importData(){
+    public static void importData(){
         String path = "input.txt";
         try (BufferedReader br = new BufferedReader(new FileReader(path))){
             String line;

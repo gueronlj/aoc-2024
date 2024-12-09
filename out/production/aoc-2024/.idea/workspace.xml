@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6439e474-cb07-4aac-957a-66299ef1e2e2" name="Changes" comment="" />
+    <list default="true" id="6439e474-cb07-4aac-957a-66299ef1e2e2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Day1-input.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Day2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AOC.java" beforeDir="false" afterPath="$PROJECT_DIR$/Day1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/input.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/aoc-2024/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/aoc-2024/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/aoc-2024/AOC.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/aoc-2024/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/aoc-2024/input.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,6 +26,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -28,8 +40,12 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.AOC.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Day1.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Day2.executor&quot;: &quot;Run&quot;,
     &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -44,14 +60,26 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager">
-    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="AOC" />
+  <component name="RunManager" selected="Application.Day2">
+    <configuration name="Day1" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Day1" />
       <module name="aoc-2024" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Day2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Day2" />
+      <module name="aoc-2024" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Day2" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -71,6 +99,12 @@
       <updated>1733534739191</updated>
       <workItem from="1733534740969" duration="2807000" />
       <workItem from="1733538727085" duration="634000" />
+      <workItem from="1733539768759" duration="2719000" />
+      <workItem from="1733542803283" duration="6392000" />
+      <workItem from="1733576365929" duration="4175000" />
+      <workItem from="1733584733512" duration="2195000" />
+      <workItem from="1733597117385" duration="1586000" />
+      <workItem from="1733612966707" duration="2912000" />
     </task>
     <servers />
   </component>
