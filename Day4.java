@@ -46,6 +46,10 @@ public class Day4 {
         ArrayList<String> rightWord = new ArrayList<>();
         ArrayList<String> upWord = new ArrayList<>();
         ArrayList<String> downWord = new ArrayList<>();
+        ArrayList<String> nwWord = new ArrayList<>();
+        ArrayList<String> neWord = new ArrayList<>();
+        ArrayList<String> seWord = new ArrayList<>();
+        ArrayList<String> swWord = new ArrayList<>();
 
         for (int i = 0; i < targetWord.length(); i++) {
             String nextLeft = "";
@@ -56,32 +60,98 @@ public class Day4 {
             String nextNW = "";
             String nextSE = "";
             String nextSW = "";
-
-            //set left limit
+        //set left limit
             if ( col - i >= 0 ){
                 nextLeft = grid.get(row).get(col - i);
                 leftWord.add(nextLeft);
             }
-            //set right limit
+        //set right limit
             if (col + i <= grid.get(row).size()-1){
                 nextRight = grid.get(row).get(col + i);
                 rightWord.add(nextRight);
             }
-            //set upward limit
+        //set upward limit
             if (row - i >= 0 ){
                 nextUp = grid.get(row - i).get(col);
                 upWord.add(nextUp);
             }
-            //set downward limit
+        //set downward limit
             if (row + i <= grid.size()-1){
                 nextDown = grid.get(row + i).get(col);
                 downWord.add(nextDown);
             }
-            //set NE diag
-//            nextNE = grid.get(row - i).get(col+i);
-//            nextNW = grid.get(row + i).get(col-i);
-//            nextSE = grid.get(row + i).get(col+i);
-//            nextSW = grid.get(row + i).get(col-i);
+        //set NE diag limits
+            //if y is in bounds but x is out
+            if( row - i >= 0 && col + i > grid.size()){
+                nextNE = grid.get(row).get(col);
+            }
+            //if y is in bounds and x is in bounds
+            if( row - i >= 0 && col + i < grid.size()){
+                nextNE = grid.get(row - i).get(col + i);
+            }
+            //if y is out of bounds and x is in.
+            if( row - i <= 0 && col + i < grid.size()){
+                nextNE= grid.get(row).get(col);
+            }
+            //if y is out and x is out of bounds
+            if( row - i <= 0 && col + i >= grid.size()){
+                nextNE = grid.get(row).get(col);
+            }
+       //set NW Diag limits
+            //if y is in and x is out
+            if( row - i >= 0 && col - i < 0 ){
+                nextNW = grid.get(row).get(col);
+            }
+            //if y is in and x is in
+            if ( row - i >= 0 && col - i >= 0){
+                nextNW = grid.get(row - i).get(col - i);
+            }
+            //if y is out and x is in
+            if ( row - i < 0 && col - i >= 0){
+                nextNW = grid.get(row).get(col);
+            }
+            //if y is out and x is out
+            if ( row - i < 0 && col - i < 0){
+                nextNW = grid.get(row).get(col);
+            }
+        //set SW Diag Limits
+            //if y is in and x is out
+            if ( row + i < grid.size() && col - i < 0){
+                nextSW = grid.get(row).get(col);
+            }
+            //if y is in and x is in
+            if ( row + i < grid.size() && col - i >= 0){
+                nextSW = grid.get(row + i).get(col - i);
+            }
+            //if y is out and x is in
+            if ( row + i >= grid.size() && col - i >= 0){
+                nextSW = grid.get(row).get(col);
+            }
+            //if y is out and x is out
+            if ( row + i >= grid.size() && col - i < 0){
+                nextSW = grid.get(row).get(col);
+            }
+        //set SE Diag Limits
+            //if y is in and x is out
+            if( row + i < grid.size() && col + i >= grid.get(row).size()){
+                nextSE = grid.get(row).get(col);
+            }
+            //if y is in and x is in
+            if( row + i < grid.size() && col + i < grid.get(row).size()){
+                nextSE = grid.get(row + i).get(col + i);
+            }
+            //if y is out and x is in
+            if( row + i >= grid.size() && col + i < grid.get(row).size()){
+                nextSE = grid.get(row).get(col);
+            }
+            //if y is out and x is out
+            if( row + i >= grid.size() && col + i >= grid.get(row).size()){
+                nextSE = grid.get(row).get(col);
+            }
+           neWord.add(nextNE);
+           nwWord.add(nextNW);
+           seWord.add(nextSE);
+           swWord.add(nextSW);
         }
 
         if ( isMatch(leftWord) ){
@@ -96,19 +166,28 @@ public class Day4 {
         if (isMatch(downWord)){
             System.out.println("Found down: " + downWord);
         }
+        if (isMatch(neWord)){
+            System.out.println("Found ne: " + neWord);
+        }
+        if (isMatch(seWord)){
+            System.out.println("Found se: " + seWord);
+        }
+        if (isMatch(swWord)){
+            System.out.println("Found sw: " + swWord);
+        }
+        if (isMatch(neWord)){
+            System.out.println("Found ne: " + neWord);
+        }
     }
 
     private static boolean isMatch(ArrayList<String> word){
-        System.out.println(word);
         String string = String.join("", word);
         String reversed = new StringBuilder(targetWord).reverse().toString();
-
         if ( string.equals(targetWord) || string.equals(reversed)){
             count++;
             return true;
         }
         return false;
-
     }
 
     private static void mapStartingPoints(){
