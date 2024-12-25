@@ -6,7 +6,7 @@ import java.util.Collections;
 
 public class Day4 {
 
-    static String targetWord = "XMAS";
+    static String startingLetter = "A";
     static int count = 0;
     static ArrayList<ArrayList<String>> grid = new ArrayList<>();
     static ArrayList<int[]> startingPoints = new ArrayList<>();
@@ -15,14 +15,14 @@ public class Day4 {
         importData();
         mapStartingPoints();
         for (int[] coords: startingPoints){
-            //check y, and x coords
-            System.out.println(coords[0] +", "+ coords[1]);
+            //check the Y and X (row and column)
             checkArea(coords[0], coords[1]);
         }
-        System.out.println("Total: " + count);
+        System.out.println(count);
     }
 
     static  void importData(){
+        //This will place each letter onto a grid
         String path = "day4-input.txt";
         try {
             BufferedReader br = new BufferedReader(new FileReader(path));
@@ -39,60 +39,46 @@ public class Day4 {
         }
     }
 
-    //Should always be fed starting coordinates of an 'X'
+    //Should always be fed coordinates of a starting letter
     static void checkArea( int row, int col ){
-        ArrayList<String> leftWord = new ArrayList<>();
-        ArrayList<String> rightWord = new ArrayList<>();
-        ArrayList<String> upWord = new ArrayList<>();
-        ArrayList<String> downWord = new ArrayList<>();
-        ArrayList<String> nwWord = new ArrayList<>();
-        ArrayList<String> neWord = new ArrayList<>();
-        ArrayList<String> seWord = new ArrayList<>();
-        ArrayList<String> swWord = new ArrayList<>();
+        //Check the 4 corners around 'A' (the starting point)...Imagine a keypad
+        //getGridValue will ensure we stay in bounds of grid
+        String kp1 = getGridValue(row - 1, col - 1);
+        String kp3 = getGridValue(row - 1, col + 1);
+        String kp7 = getGridValue(row + 1, col - 1);
+        String kp9 = getGridValue(row + 1, col + 1);
 
-        //spread out in all directions, collecting letters in that direction
-        for (int i = 0; i < targetWord.length(); i++) {
-            addLetter(leftWord, row, col - i);
-            addLetter(rightWord, row, col + i);
-            addLetter(upWord, row - i, col);
-            addLetter(downWord, row + i, col);
-            addLetter(nwWord, row - i, col - i);
-            addLetter(neWord, row - i, col + i);
-            addLetter(swWord, row + i, col + i);
-            addLetter(seWord, row + i, col - i);
-        }
-
-        //check each word found in each direction for match with target word.
-        checkForMatch(upWord);
-        checkForMatch(neWord);
-        checkForMatch(rightWord);
-        checkForMatch(seWord);
-        checkForMatch(downWord);
-        checkForMatch(swWord);
-        checkForMatch(leftWord);
-        checkForMatch(nwWord);
-    }
-
-    static void addLetter(ArrayList<String> word, int row, int col){
-        if(isInBounds(row, col)){
-            word.add(grid.get(row).get(col));
-        }
-    }
-    static boolean isInBounds(int row, int col) {
-        //coords must be inside of grid
-        return row >= 0 && row < grid.size() && col >= 0 && col < grid.get(row).size();
-    }
-
-    private static void checkForMatch(ArrayList<String> word){
-        String string = String.join("", word);
-        if(string.equals(targetWord)){
+        if (isPatternMatch(kp1, kp3, kp7, kp9)) {
+            System.out.println("Found X?: " + row + ", " + col);
             count++;
-            System.out.println(word);
         }
+        if (isPatternMatch(kp3, kp9, kp7, kp1)) {
+            System.out.println("Found X?: " + row + ", " + col);
+            count++;
+        }
+        if (isPatternMatch(kp9, kp7, kp1, kp3)) {
+            System.out.println("Found X?: " + row + ", " + col);
+            count++;
+        }
+        if (isPatternMatch(kp7, kp1, kp3, kp9)) {
+            System.out.println("Found X?: " + row + ", " + col);
+            count++;
+        }
+    }
+
+    static String getGridValue(int row, int col) {
+        if (row>= 0 && row < grid.size() && col >= 0 && col < grid.get(row).size()) {
+            return grid.get(row).get(col);
+        }
+        // Return an empty string if out of bounds
+        return "";
+    }
+
+    static boolean isPatternMatch(String corner1, String corner2, String corner3, String corner4s) {
+        return (corner1.equals("S") && corner2.equals("S") && corner3.equals("M") && corner4s.equals("M"));
     }
 
     private static void mapStartingPoints(){
-        String startingLetter = "X";
         for (ArrayList<String>row : grid){
             for(int i = 0; i< row.size(); i++){
                 if ( row.get(i).equals(startingLetter)){
